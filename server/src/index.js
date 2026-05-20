@@ -3,8 +3,10 @@ import dotenv from "dotenv";
 import express from "express";
 import helmet from "helmet";
 import http from "http";
+import path from "path";
 import rateLimit from "express-rate-limit";
 import morgan from "morgan";
+import { fileURLToPath } from "url";
 import { Server } from "socket.io";
 import { connectDb } from "./config/db.js";
 import { errorHandler, notFound } from "./middleware/error.js";
@@ -17,8 +19,10 @@ import reviewRoutes from "./routes/reviews.js";
 import vehicleRoutes from "./routes/vehicles.js";
 import { configureSocket } from "./socket/index.js";
 
-dotenv.config({ path: "../.env" });
-dotenv.config();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+dotenv.config({ path: path.resolve(__dirname, "../..", ".env") });
 
 const app = express();
 const server = http.createServer(app);
