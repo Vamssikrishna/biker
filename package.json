@@ -1,0 +1,21 @@
+{
+  "name": "biker-vehicle-rental-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI-powered peer-to-peer vehicle rental and delivery platform built with MERN.",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace server\" \"npm run dev --workspace client\"",
+    "server": "npm run dev --workspace server",
+    "client": "npm run dev --workspace client",
+    "seed": "npm run seed --workspace server",
+    "build": "npm run build --workspace client",
+    "start": "npm run start --workspace server"
+  },
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "devDependencies": {
+    "concurrently": "latest"
+  }
+}
